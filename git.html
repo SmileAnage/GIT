@@ -1,0 +1,714 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Made with Remarkable!
+  </title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   body,table tr{background-color:#fff}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}pre code,table,table tr{padding:0}hr,pre code{background:0 0}body{font:16px Helvetica,Arial,sans-serif;line-height:1.4;color:#333;word-wrap:break-word;padding:10px 15px}strong,table tr th{font-weight:700}h1{font-size:2em;margin:.67em 0;text-align:center}h2{font-size:1.75em}h3{font-size:1.5em}h4{font-size:1.25em}h1,h2,h3,h4,h5,h6{font-weight:700;position:relative;margin-top:15px;margin-bottom:15px;line-height:1.1}h1,h2{border-bottom:1px solid #eee}hr{height:0;margin:15px 0;overflow:hidden;border:0;border-bottom:1px solid #ddd}a{color:#4183C4}a.absent{color:#c00}ol,ul{padding-left:15px;margin-left:5px}ol{list-style-type:lower-roman}table tr{border-top:1px solid #ccc;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}img{max-width:100%}blockquote{padding:0 15px;border-left:4px solid #ccc}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;white-space:pre;border:none}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h1 id="git">
+   GIT
+  </h1>
+  <div class="toc">
+   <ul>
+    <li>
+     <a href="#git">
+      GIT
+     </a>
+     <ul>
+      <li>
+       <a href="#git_1">
+        GIT简介
+       </a>
+      </li>
+      <li>
+       <a href="#git_2">
+        GIT使用
+       </a>
+       <ul>
+        <li>
+         <a href="#_1">
+          基本概念
+         </a>
+        </li>
+        <li>
+         <a href="#_2">
+          初始配置
+         </a>
+        </li>
+        <li>
+         <a href="#_3">
+          基本命令
+         </a>
+         <ul>
+          <li>
+           <a href="#_4">
+            @扩展延伸
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li>
+         <a href="#_5">
+          版本控制
+         </a>
+        </li>
+        <li>
+         <a href="#_6">
+          保存工作区
+         </a>
+        </li>
+        <li>
+         <a href="#_7">
+          分支管理
+         </a>
+        </li>
+        <li>
+         <a href="#_8">
+          远程仓库操作命令
+         </a>
+        </li>
+       </ul>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </div>
+  <h2 id="git_1">
+   GIT简介
+  </h2>
+  <ol>
+   <li>
+    什么是GIT
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git是一个开源的分布式版本控制系统，用于高效的管理各种大小项目和文件。
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    代码管理工具的用途
+   </li>
+  </ol>
+  <blockquote>
+   <ul>
+    <li>
+     防止代码丢失，做备份
+    </li>
+    <li>
+     项目的版本管理和控制，可以通过设置节点进行跳转
+    </li>
+    <li>
+     建立各自的开发环境分支，互不影响，方便合并
+    </li>
+    <li>
+     在多终端开发时，方便代码的相互传输
+    </li>
+   </ul>
+  </blockquote>
+  <ol>
+   <li>
+    git的特点
+   </li>
+  </ol>
+  <blockquote>
+   <ul>
+    <li>
+     git是开源的，多在*nix下使用，可以管理各种文件
+    </li>
+    <li>
+     git是分布式的项目管理工具(svn是集中式的)
+    </li>
+    <li>
+     git数据管理更多样化，分享速度快，数据安全
+    </li>
+    <li>
+     git 拥有更好的分支支持，方便多人协调
+    </li>
+   </ul>
+  </blockquote>
+  <ol>
+   <li>
+    git安装
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    sudo apt-get install git
+   </p>
+  </blockquote>
+  <h2 id="git_2">
+   GIT使用
+  </h2>
+  <p>
+   <img alt="git结构" src="img/git.jpeg"/>
+  </p>
+  <h3 id="_1">
+   基本概念
+  </h3>
+  <ul>
+   <li>
+    工作区：项目所在操作目录，实际操作项目的区域
+   </li>
+   <li>
+    暂存区: 用于记录工作区的工作（修改）内容
+   </li>
+   <li>
+    仓库区: 用于备份工作区的内容
+   </li>
+   <li>
+    远程仓库: 远程主机上的GIT仓库
+   </li>
+  </ul>
+  <blockquote>
+   <p>
+    注意： 在本地仓库中，git总是希望工作区的内容与仓库区保持一致，而且只有仓库区的内容才能和其他远程仓库交互。
+   </p>
+  </blockquote>
+  <h3 id="_2">
+   初始配置
+  </h3>
+  <blockquote>
+   <p>
+    配置命令: git config
+   </p>
+   <ul>
+    <li>
+     <p>
+      配置所有用户： git config –system [选项]
+     </p>
+     <blockquote>
+      <p>
+       配置文件位置:  /etc/gitconfig
+      </p>
+     </blockquote>
+    </li>
+    <li>
+     <p>
+      配置当前用户： git config –global [选项]
+     </p>
+     <blockquote>
+      <p>
+       配置文件位置:  ~/.gitconfig
+      </p>
+     </blockquote>
+    </li>
+    <li>
+     <p>
+      配置当前项目： git config  [选项]
+     </p>
+     <blockquote>
+      <p>
+       配置文件位置:  project/.git/config
+      </p>
+     </blockquote>
+    </li>
+   </ul>
+  </blockquote>
+  <ol>
+   <li>
+    配置用户名
+   </li>
+  </ol>
+  <pre><code>e.g. 将用户名设置为smile
+sudo git config --system user.name smile
+</code></pre>
+  <ol>
+   <li>
+    配置用户邮箱
+   </li>
+  </ol>
+  <pre><code>e.g. 将邮箱设置为smileanage@aliyun.com
+git config --global user.email smileanage@aliyun.com
+</code></pre>
+  <ol>
+   <li>
+    配置编译器
+   </li>
+  </ol>
+  <pre><code>e.g. 配置编译器为pycharm
+git config core.editor pycharm
+
+</code></pre>
+  <ol>
+   <li>
+    查看配置信息
+   </li>
+  </ol>
+  <pre><code>git config --list
+</code></pre>
+  <h3 id="_3">
+   基本命令
+  </h3>
+  <ol>
+   <li>
+    初始化仓库
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git  init
+    <br/>
+    意义：将某个项目目录变为git操作目录，生成git本地仓库。即该项目目录可以使用git管理
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    查看本地仓库状态
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git  status
+    <br/>
+    说明: 初始化仓库后默认工作在master分支，当工作区与仓库区不一致时会有提示。
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    将工作内容记录到暂存区
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git add [files..]
+   </p>
+  </blockquote>
+  <pre><code>e.g. 将 a ，b 记录到暂存区
+git add  a b
+
+e.g. 将所有文件（不包含隐藏文件）记录到暂存区
+git add  *
+</code></pre>
+  <ol>
+   <li>
+    取消文件暂存记录
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git rm –cached [file]
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    将文件同步到本地仓库
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git commit [file] -m [message]
+    <br/>
+    说明: -m表示添加一些同步信息，表达同步内容
+   </p>
+  </blockquote>
+  <pre><code>e.g.  将暂存区所有记录同步到仓库区
+git commit  -m 'add files'
+</code></pre>
+  <ol>
+   <li>
+    查看commit 日志记录
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git log
+    <br/>
+    git log –pretty=oneline
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    比较工作区文件和仓库文件差异
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git diff  [file]
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    将暂存区或者某个commit点文件恢复到工作区
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git checkout [commit] – [file]
+    <br/>
+    * –是为了防止误操作，checkout还有切换分支的作用
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    移动或者删除文件
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git  mv  [file] [path]
+    <br/>
+    git  rm  [files]
+    <br/>
+    注意: 这两个操作会修改工作区内容，同时将操作记录提交到暂存区。
+   </p>
+  </blockquote>
+  <hr/>
+  <h4 id="_4">
+   @扩展延伸
+  </h4>
+  <p>
+   在Git项目中可以通过在项目的某个文件夹下定义.gitignore文件的方式，规定相应的忽略规则，用来管理当前文件夹下的文件的Git提交行为。.gitignore 文件是可以提交到公有仓库中，这就为该项目下的所有开发者都共享一套定义好的忽略规则。在.gitingore 文件中，遵循相应的语法，在每一行指定一个忽略规则。
+  </p>
+  <pre><code>.gitignore忽略规则简单说明
+
+file            表示忽略file文件
+*.a             表示忽略所有 .a 结尾的文件
+!lib.a          表示但lib.a除外
+build/          表示忽略 build/目录下的所有文件，过滤整个build文件夹；
+
+</code></pre>
+  <hr/>
+  <h3 id="_5">
+   版本控制
+  </h3>
+  <ol>
+   <li>
+    退回到上一个commit节点
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git reset –hard HEAD
+    <sup>
+     <br/>
+     注意 ： 一个
+    </sup>
+    表示回退1个版本，依次类推。当版本回退之后工作区会自动和当前commit版本保持一致
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    退回到指定的commit_id节点(标示号前７位)
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git reset –hard [commit_id]
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    查看所有操作记录
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git reflog
+    <br/>
+    注意:最上面的为最新记录，可以利用commit_id去往任何操作位置
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    创建标签
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    标签: 在项目的重要commit位置添加快照，保存当时的工作状态，一般用于版本的迭代。
+   </p>
+   <p>
+    git  tag  [tag_name] [commit_id] -m  [message]
+    <br/>
+    说明: commit_id可以不写则默认标签表示最新的commit_id位置，message也可以不写，但是最好添加。
+   </p>
+  </blockquote>
+  <pre><code>e.g. 在最新的commit处添加标签v1.0
+git tag v1.0 -m '版本1'
+</code></pre>
+  <ol>
+   <li>
+    查看标签
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git tag  查看标签列表
+    <br/>
+    git show [tag_name]  查看标签详细信息
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    去往某个标签节点
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git reset –hard [tag]
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    删除标签
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git tag -d  [tag]
+   </p>
+  </blockquote>
+  <h3 id="_6">
+   保存工作区
+  </h3>
+  <ol>
+   <li>
+    保存工作区内容
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git stash save [message]
+    <br/>
+    说明: 将工作区未提交的修改封存，让工作区回到修改前的状态
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    查看工作区列表
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git stash  list
+    <br/>
+    说明:最新保存的工作区在最上面
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    应用某个工作区
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git stash  apply  [stash@{n}]
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    删除工作区
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git stash drop [stash@{n}]  删除某一个工作区
+    <br/>
+    git stash clear  删除所有保存的工作区
+   </p>
+  </blockquote>
+  <h3 id="_7">
+   分支管理
+  </h3>
+  <blockquote>
+   <p>
+    定义: 分支即每个人在原有代码（分支）的基础上建立自己的工作环境，单独开发，互不干扰。完成开发工作后再进行分支统一合并。
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    查看分支情况
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git branch
+    <br/>
+    说明: 前面带 * 的分支表示当前工作分支
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    创建分支
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git branch [branch_name]
+    <br/>
+    说明: 基于a分支创建b分支，此时b分支会拥有a分支全部内容。在创建b分支时最好保持a分支”干净”状态。
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    切换工作分支
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git checkout [branch]
+    <br/>
+    说明: 2,3可以同时操作，即创建并切换分支
+   </p>
+   <blockquote>
+    <p>
+     git checkout -b [branch_name]
+    </p>
+   </blockquote>
+  </blockquote>
+  <ol>
+   <li>
+    合并分支
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git merge [branch]
+   </p>
+   <p>
+    冲突问题是合并分支过程中最为棘手的问题
+   </p>
+   <blockquote>
+    <p>
+     当分支合并时，原分支和以前发生了变化就会产生冲突
+     <br/>
+     当合并分支时添加新的模块（文件），这种冲突可以自动解决，只需自己决定commit操作即可。
+     <br/>
+     当合并分支时两个分支修改了同一个文件，则需要手动解决冲突。
+    </p>
+   </blockquote>
+  </blockquote>
+  <ol>
+   <li>
+    删除分支
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git branch -d [branch]  删除分支
+    <br/>
+    git branch -D [branch]  删除没有被合并的分支
+   </p>
+  </blockquote>
+  <p>
+   <img alt="分支合并" src="img/merge.png"/>
+  </p>
+  <h3 id="_8">
+   远程仓库操作命令
+  </h3>
+  <p>
+   所有操作在本地git仓库下进行
+  </p>
+  <ol>
+   <li>
+    添加远程仓库
+   </li>
+  </ol>
+  <pre><code>git remote  add origin https://github.com/xxxxxxxxx
+</code></pre>
+  <ol>
+   <li>
+    删除远程主机
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git remote rm [origin]
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    查看连接的主机
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git remote
+    <br/>
+    注意: 一个git项目连接的远程主机名不会重复
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    将本地分支推送给远程仓库
+   </li>
+  </ol>
+  <pre><code>将master分支推送给origin主机远程仓库，第一次推送分支使用-u表示与远程对应分支建立自动关联
+git push -u origin  master
+</code></pre>
+  <ol>
+   <li>
+    删除远程分支
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git branch -a  查看所有分支
+    <br/>
+    git push origin  [:branch]  删除远程分支
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    其他推送方法
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git push –force origin  用于本地版本比远程版本旧时强行推送本地版本
+   </p>
+   <p>
+    git push origin [tag]  推送本地标签到远程
+   </p>
+   <p>
+    git push origin –tags  推送本地所有标签到远程
+   </p>
+   <p>
+    git push origin –delete tag  [tagname]  删除远程仓库标签
+   </p>
+  </blockquote>
+  <ol>
+   <li>
+    从远程获取代码
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    git pull
+   </p>
+   <p>
+    将远程分支master拉取到本地，作为tmp分支
+    <br/>
+    git fetch origin  master:tmp
+   </p>
+   <p>
+    区别
+   </p>
+   <blockquote>
+    <p>
+     pull将远程内容直接拉取到本地，并和对应分支内容进行合并
+     <br/>
+     fetch将远程分支内容拉取到本地，但是不会和本地对应分支合并，可以自己判断后再使用merge合并。
+    </p>
+   </blockquote>
+  </blockquote>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>
